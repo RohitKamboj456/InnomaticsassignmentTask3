@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light System</title>
+</head>
+<body>
+    <h1>Smart Traffic Light System</h1>
+    <label for="density">Traffic Density:</label>
+    <select id="density">
+        <option value="Heavy Traffic">Heavy Traffic</option>
+        <option value="Moderate Traffic">Moderate Traffic</option>
+        <option value="Light Traffic">Light Traffic</option>
+    </select><br><br>
+    <button onclick="controlTraffic()">Control Traffic</button>
+    <p id="result"></p>
+
+    <script>
+        function controlTraffic() {
+            const density = document.getElementById('density').value;
+            let time;
+
+            switch (density) {
+                case "Heavy Traffic": time = 60; break;
+                case "Moderate Traffic": time = 40; break;
+                case "Light Traffic": time = 20; break;
+                default: time = 0;
+            }
+
+            document.getElementById('result').textContent = `Green signal will stay on for ${time} seconds.`;
+        }
+    </script>
+</body>
+</html>
