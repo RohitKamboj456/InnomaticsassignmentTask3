@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Filter</title>
+</head>
+<body>
+    <h1>Job Application Filter</h1>
+    <label for="age">Age:</label>
+    <input type="number" id="age"><br><br>
+    <label for="experience">Experience (years):</label>
+    <input type="number" id="experience"><br><br>
+    <label for="qualification">Qualification:</label>
+    <input type="text" id="qualification"><br><br>
+    <button onclick="checkEligibility()">Check Eligibility</button>
+    <p id="result"></p>
+
+    <script>
+        function checkEligibility() {
+            const age = parseInt(document.getElementById('age').value);
+            const experience = parseInt(document.getElementById('experience').value);
+            const qualification = document.getElementById('qualification').value;
+
+            const isEligible = age >= 21 && age <= 55 && experience >= 2 && qualification === "Bachelor's Degree";
+            document.getElementById('result').textContent = isEligible ? "Eligible" : "Not Eligible";
+        }
+    </script>
+</body>
+</html>

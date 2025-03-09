@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Discount</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input { padding: 8px; width: 200px; }
+        button { padding: 10px 20px; margin-top: 10px; }
+        p { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Online Shopping Discount & Free Shipping</h1>
+    <label for="orderAmount">Order Amount:</label>
+    <input type="number" id="orderAmount" placeholder="Enter order amount"><br>
+    <button onclick="calculateFinalAmount()">Calculate Final Amount</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateFinalAmount() {
+            const orderAmount = parseFloat(document.getElementById('orderAmount').value);
+            if (isNaN(orderAmount) {
+                showResult("Please enter a valid amount.", "red");
+                return;
+            }
+
+            const discount = calculateDiscount(orderAmount);
+            const shipping = calculateShipping(orderAmount);
+            const finalAmount = orderAmount - discount + shipping;
+
+            showResult(`Final Payable Amount: $${finalAmount.toFixed(2)}`, "green");
+        }
+
+        function calculateDiscount(orderAmount) {
+            if (orderAmount > 1000) return 0.2 * orderAmount;
+            else if (orderAmount >= 500) return 0.1 * orderAmount;
+            else return 0;
+        }
+
+        function calculateShipping(orderAmount) {
+            return orderAmount > 50 ? 0 : 10;
+        }
+
+        function showResult(message, color) {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = message;
+            resultElement.style.color = color;
+        }
+    </script>
+</body>
+</html> 

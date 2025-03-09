@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Redemption</title>
+</head>
+<body>
+    <h1>E-commerce Coupon Redemption</h1>
+    <label for="orderAmount">Order Amount:</label>
+    <input type="number" id="orderAmount"><br><br>
+    <label for="couponCode">Coupon Code:</label>
+    <input type="text" id="couponCode"><br><br>
+    <button onclick="applyCoupon()">Apply Coupon</button>
+    <p id="result"></p>
+
+    <script>
+        function applyCoupon() {
+            const orderAmount = parseInt(document.getElementById('orderAmount').value);
+            const couponCode = document.getElementById('couponCode').value;
+            let finalAmount = orderAmount;
+
+            if (couponCode === "DISCOUNT10" && orderAmount > 500) {
+                finalAmount = orderAmount * 0.9;
+            } else if (couponCode === "FREESHIP" && orderAmount > 200) {
+                finalAmount = orderAmount;
+            }
+
+            document.getElementById('result').textContent = `Final Price: $${finalAmount}`;
+        }
+    </script>
+</body>
+</html>
